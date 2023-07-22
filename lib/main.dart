@@ -20,6 +20,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   double height = 160;
+  double weight = 50;
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +73,7 @@ class _HomePageState extends State<HomePage> {
               children: [
                 Text(
                   // height.toInt().toString(),
-                  height.toStringAsFixed(1),
+                  weight.toStringAsFixed(1),
                   style: const TextStyle(
                     fontSize: 32.0,
                     fontWeight: FontWeight.w700,
@@ -87,11 +88,11 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             Slider(
-              value: height,
-              min: 120,
-              max: 250,
+              value: weight,
+              min: 30,
+              max: 120,
               onChanged: (double value) {
-                height = value;
+                weight = value;
                 setState(() {});
               },
             ),
