@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 void main() {
@@ -24,6 +23,9 @@ class _HomePageState extends State<HomePage> {
   double height = 160;
   double weight = 50;
   double bmi = 0;
+  String result = "";
+  String recommendation = "";
+  String image = "image1";
 
   @override
   Widget build(BuildContext context) {
@@ -108,6 +110,31 @@ class _HomePageState extends State<HomePage> {
               child: ElevatedButton(
                 onPressed: () {
                   bmi = weight / pow((height * 0.01), 2);
+                  // 18.49 Bajo peso
+                  // 18.5 y 24.9 // Normal
+                  // 25 Sobrepeso
+
+                  if (bmi < 18.5) {
+                    //Bajo peso
+                    result = "Bajo peso";
+                    recommendation = "Debes de comer sano y hacer ejercicio.";
+                    image = "image1";
+                  } else if (bmi < 25) {
+                    //bmi >= 18.5 && bmi < 25
+                    //Normal
+                    result = "Normal";
+                    recommendation =
+                        "Todo va bien, no olvides de comer sano y seguir haciendo ejercicios.";
+
+                    image = "image2";
+                  } else {
+                    //Sobrepeso
+                    result = "Sobrepeso";
+                    recommendation =
+                        "Debes de comer más sano y realizar ejercicio constantemente.";
+                    image = "image3";
+                  }
+
                   setState(() {});
                 },
                 child: Text("Calcular"),
@@ -128,14 +155,14 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     Text(
-                      "Normal",
+                      result,
                       style: TextStyle(
                         fontSize: 18.0,
                         color: Colors.indigo,
                       ),
                     ),
                     Text(
-                      "Debes de comer más saludable de comer más saludable de comer más saludable asdasd asdasd asdsasd sadasdasd",
+                      recommendation,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.black45,
@@ -143,7 +170,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     Expanded(
                       child: Image.asset(
-                        "assets/images/image1.png",
+                        "assets/images/$image.png",
                       ),
                     ),
                   ],
