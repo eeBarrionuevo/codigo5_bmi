@@ -23,9 +23,81 @@ class _HomePageState extends State<HomePage> {
   double height = 160;
   double weight = 50;
   double bmi = 0;
+
   String result = "";
   String recommendation = "";
   String image = "image1";
+
+  void calculate() {
+    bmi = weight / pow((height * 0.01), 2);
+    // 18.49 Bajo peso
+    // 18.5 y 24.9 // Normal
+    // 25 Sobrepeso
+
+    if (bmi < 18.5) {
+      //Bajo peso
+      result = "Bajo peso";
+      recommendation = "Debes de comer sano y hacer ejercicio.";
+      image = "image1";
+    } else if (bmi < 25) {
+      //bmi >= 18.5 && bmi < 25
+      //Normal
+      result = "Normal";
+      recommendation =
+          "Todo va bien, no olvides de comer sano y seguir haciendo ejercicios.";
+
+      image = "image2";
+    } else {
+      //Sobrepeso
+      result = "Sobrepeso";
+      recommendation =
+          "Debes de comer más sano y realizar ejercicio constantemente.";
+      image = "image3";
+    }
+    setState(() {});
+  }
+
+  double calculateBMI() {
+    return weight / pow((height * 0.01), 2);
+  }
+
+  String getResult() {
+    //Bajo peso, Normal, Sobrepeso
+    double bmi = calculateBMI();
+    String result = "";
+
+    if (bmi < 18.5) {
+      // return "Bajo peso";
+      result = "Bajo peso";
+    } else if (bmi < 25) {
+      // return "Normal";
+      result = "Normal";
+    } else {
+      // return "Sobrepeso";
+      result = "Sobrepeso";
+    }
+
+    return result;
+  }
+
+  String getRecommendation() {
+    double bmi = calculateBMI();
+    String recommendation = "";
+
+    if (bmi < 18.5) {
+      // return "Bajo peso";
+      recommendation = "Debes de comer más sano y hacer ejercicio.";
+    } else if (bmi < 25) {
+      // return "Normal";
+      recommendation = "Todo va muy bien, sigue de esa forma.";
+    } else {
+      // return "Sobrepeso";
+      recommendation =
+          "Debes de comer más sano y tienes que realizar más ejercicios.";
+    }
+
+    return result;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -109,33 +181,7 @@ class _HomePageState extends State<HomePage> {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  bmi = weight / pow((height * 0.01), 2);
-                  // 18.49 Bajo peso
-                  // 18.5 y 24.9 // Normal
-                  // 25 Sobrepeso
-
-                  if (bmi < 18.5) {
-                    //Bajo peso
-                    result = "Bajo peso";
-                    recommendation = "Debes de comer sano y hacer ejercicio.";
-                    image = "image1";
-                  } else if (bmi < 25) {
-                    //bmi >= 18.5 && bmi < 25
-                    //Normal
-                    result = "Normal";
-                    recommendation =
-                        "Todo va bien, no olvides de comer sano y seguir haciendo ejercicios.";
-
-                    image = "image2";
-                  } else {
-                    //Sobrepeso
-                    result = "Sobrepeso";
-                    recommendation =
-                        "Debes de comer más sano y realizar ejercicio constantemente.";
-                    image = "image3";
-                  }
-
-                  setState(() {});
+                  calculate();
                 },
                 child: Text("Calcular"),
               ),
