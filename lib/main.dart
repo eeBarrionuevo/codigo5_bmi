@@ -31,7 +31,7 @@ class _HomePageState extends State<HomePage> {
         centerTitle: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(12.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
             const Text("Altura:"),
@@ -95,6 +95,54 @@ class _HomePageState extends State<HomePage> {
                 weight = value;
                 setState(() {});
               },
+            ),
+            const SizedBox(
+              height: 12.0,
+            ),
+            SizedBox(
+              height: 50.0,
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () {},
+                child: Text("Calcular"),
+              ),
+            ),
+            const SizedBox(
+              height: 12.0,
+            ),
+            Expanded(
+              child: Card(
+                child: Column(
+                  children: [
+                    Text(
+                      "24",
+                      style: TextStyle(
+                        fontSize: 38.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      "Normal",
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        color: Colors.indigo,
+                      ),
+                    ),
+                    Text(
+                      "Debes de comer más saludable de comer más saludable de comer más saludable asdasd asdasd asdsasd sadasdasd",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.black45,
+                      ),
+                    ),
+                    Expanded(
+                      child: Image.asset(
+                        "assets/images/image1.png",
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ],
         ),
