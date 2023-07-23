@@ -22,40 +22,40 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   double height = 160;
   double weight = 50;
-  double bmi = 0;
 
-  String result = "";
-  String recommendation = "";
-  String image = "image1";
+  // double bmi = 0;
+  // String result = "";
+  // String recommendation = "";
+  // String image = "image1";
 
-  void calculate() {
-    bmi = weight / pow((height * 0.01), 2);
-    // 18.49 Bajo peso
-    // 18.5 y 24.9 // Normal
-    // 25 Sobrepeso
+  // void calculate() {
+  //   bmi = weight / pow((height * 0.01), 2);
+  //   // 18.49 Bajo peso
+  //   // 18.5 y 24.9 // Normal
+  //   // 25 Sobrepeso
 
-    if (bmi < 18.5) {
-      //Bajo peso
-      result = "Bajo peso";
-      recommendation = "Debes de comer sano y hacer ejercicio.";
-      image = "image1";
-    } else if (bmi < 25) {
-      //bmi >= 18.5 && bmi < 25
-      //Normal
-      result = "Normal";
-      recommendation =
-          "Todo va bien, no olvides de comer sano y seguir haciendo ejercicios.";
+  //   if (bmi < 18.5) {
+  //     //Bajo peso
+  //     result = "Bajo peso";
+  //     recommendation = "Debes de comer sano y hacer ejercicio.";
+  //     image = "image1";
+  //   } else if (bmi < 25) {
+  //     //bmi >= 18.5 && bmi < 25
+  //     //Normal
+  //     result = "Normal";
+  //     recommendation =
+  //         "Todo va bien, no olvides de comer sano y seguir haciendo ejercicios.";
 
-      image = "image2";
-    } else {
-      //Sobrepeso
-      result = "Sobrepeso";
-      recommendation =
-          "Debes de comer más sano y realizar ejercicio constantemente.";
-      image = "image3";
-    }
-    setState(() {});
-  }
+  //     image = "image2";
+  //   } else {
+  //     //Sobrepeso
+  //     result = "Sobrepeso";
+  //     recommendation =
+  //         "Debes de comer más sano y realizar ejercicio constantemente.";
+  //     image = "image3";
+  //   }
+  //   setState(() {});
+  // }
 
   double calculateBMI() {
     return weight / pow((height * 0.01), 2);
@@ -181,7 +181,7 @@ class _HomePageState extends State<HomePage> {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  calculate();
+                  // calculate();
                 },
                 child: Text("Calcular"),
               ),
@@ -194,21 +194,21 @@ class _HomePageState extends State<HomePage> {
                 child: Column(
                   children: [
                     Text(
-                      bmi.toStringAsFixed(1),
+                      calculateBMI().toStringAsFixed(1),
                       style: TextStyle(
                         fontSize: 38.0,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     Text(
-                      result,
+                      getResult(),
                       style: TextStyle(
                         fontSize: 18.0,
                         color: Colors.indigo,
                       ),
                     ),
                     Text(
-                      recommendation,
+                      getRecommendation(),
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.black45,
@@ -216,7 +216,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     Expanded(
                       child: Image.asset(
-                        "assets/images/$image.png",
+                        "assets/images/image1.png",
                       ),
                     ),
                   ],
