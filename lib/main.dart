@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -21,6 +23,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   double height = 160;
   double weight = 50;
+  double bmi = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -103,7 +106,10 @@ class _HomePageState extends State<HomePage> {
               height: 50.0,
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  bmi = weight / pow((height * 0.01), 2);
+                  setState(() {});
+                },
                 child: Text("Calcular"),
               ),
             ),
@@ -115,7 +121,7 @@ class _HomePageState extends State<HomePage> {
                 child: Column(
                   children: [
                     Text(
-                      "24",
+                      bmi.toStringAsFixed(1),
                       style: TextStyle(
                         fontSize: 38.0,
                         fontWeight: FontWeight.bold,
