@@ -96,7 +96,7 @@ class _HomePageState extends State<HomePage> {
           "Debes de comer más sano y tienes que realizar más ejercicios.";
     }
 
-    return result;
+    return recommendation;
   }
 
   @override
