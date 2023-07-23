@@ -93,7 +93,7 @@ class _HomePageState extends State<HomePage> {
     } else {
       // return "Sobrepeso";
       recommendation =
-          "Debes de comer más sano y tienes que realizar más ejercicios.";
+          "Debes de comer más sano y tienes que realizar más ejercicios";
     }
 
     return recommendation;
